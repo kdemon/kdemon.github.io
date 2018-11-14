@@ -85,7 +85,7 @@ function decTohex(number) {
 $(document).ready(function() {
     $('#genBtn').on('click', function() {
         var kshID = Number(document.getElementById("numksh").value);
-        var kshID = Math.floor(kshID);
+        kshID = Math.floor(kshID);
         if (kshID <= 0 || kshID > 4294967295) {
             document.getElementById("strConf").innerHTML = "<div class='uk-alert uk-alert-danger uk-text-break'>Неверное значение. <br /><br />Инженер Континента должен страдать! <i class='uk-icon-copyright'></i> Dmitry Nesterkin _aka_ Undelborg</div>";
         } else {
