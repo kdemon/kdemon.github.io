@@ -93,11 +93,16 @@ $(document).ready(function() {
             document.getElementById("strConf").innerHTML = "<div class='uk-alert uk-alert-success uk-text-break'><b>Строка конфигурации для КШ №: " + kshID + "</b><br />" + strConf + "</div>";
         }
     });
+    $('#numksh').keypress(function(e){
+            if(e.which == 13){
+                $('#genBtn').click();
+            }
+    });
 });
             </script>
 			            <div class="uk-container-center uk-margin-top uk-margin-left uk-margin-right">
                 <center>
-                    <form class="uk-form " id="genForm">
+                    <form class="uk-form " id="genForm" onsubmit="return false">
                         <input type="number" id="numksh" placeholder="Введите № КШ (не заводской номер)" class="uk-width-1-2" required />
                         
                         <select id="platform" required>
