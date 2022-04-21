@@ -83,6 +83,12 @@ function decTohex(number) {
     return ("00000000" + result).slice(-8);
 }
 
+function noImgPort(e) {
+  if (!(e.target.attributes.src.value === '../img/nodata.svg')){
+    e.target.src='../img/nodata.svg';
+  }
+}
+
 $(document).ready(function() {
     $('#genBtn').on('click', function() {
         var kshID = Number(document.getElementById("numksh").value);
@@ -92,7 +98,8 @@ $(document).ready(function() {
         } else {
             var platforma = document.getElementById("platform").value;
             var strConf = decTohex(kshID) + platforma;
-            document.getElementById("strConf").innerHTML = "<div class='uk-alert uk-alert-success uk-text-break'><b>Строка конфигурации для КШ №: " + kshID + "</b><br />" + strConf + "</div>";
+            var optionText = $("#platform option:selected" ).text();
+            document.getElementById("strConf").innerHTML = "<div class='uk-alert uk-alert-success uk-text-break'><b>Строка конфигурации для КШ №: " + kshID + "</b><br />" + strConf + "</div> <div class='uk-align-center'><img src='../img/" + optionText + ".svg' data-uk-svg onError=noImgPort(event);></div>";
         }
     });
     $('#numksh').keypress(function(e){
@@ -120,7 +127,7 @@ $(document).ready(function() {
                             
                             <option value="5igb0*3001igb1*02BDigb2*02BDigb3*02BDigb4*02BDffff">IPC-50(шасси LN-010C)</option>
 				
-			                <option value="5igb0*02BDigb1*02BDigb2*02BDigb3*02BDix0*0001ffff">IPC-R10/IPC-R50 (шасси SC R15)</option>
+			                <option value="5igb0*02BDigb1*02BDigb2*02BDigb3*02BDix0*0001ffff">IPC-R10 и IPC-R50 (шасси SC R15)</option>
                             
                             <option value="8igb0*3001igb1*3001igb2*02BDigb3*02BDigb4*02BDigb5*02BDigb6*02BDigb7*02BDffff">IPC-100(шасси G560)</option>
                             
@@ -128,7 +135,7 @@ $(document).ready(function() {
                             
                             <option value="8igb0*3001igb1*3001igb2*02BDigb3*02BDigb4*02BDigb5*02BDigb6*02BDigb7*02BDffff">IPC-100(шасси S102)</option>
                             
-                            <option value="8igb0*02BDigb1*02BDigb2*02BDigb3*02BDix0*0001ix1*0001ix2*0215ix3*0215ffff">IPC-R300(шасси ???)</option>
+                            <option value="8igb0*02BDigb1*02BDigb2*02BDigb3*02BDix0*0001ix1*0001ix2*0215ix3*0215ffff">IPC-R300 и R550(шасси SC R300)</option>
                             
                             <option value="6igb0*02BDigb1*02BDigb2*02BDigb3*02BDem0*02BDem1*02BDffff">IPC-400(шасси MS-9297)</option>
                             
